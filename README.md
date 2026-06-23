@@ -9,8 +9,21 @@ SpoofCloudFinder is a message-level AIS dataset for studying coordinated maritim
 | `Datasets/April-May 2026.parquet` | Primary dataset file. |
 | `dataset_profile.ipynb` | Profiling notebook used to inspect schema, coverage, labels, and summary statistics. |
 
-## Dataset Summary
+## Data Collection
 
+The upstream AIS corpus used for SpoofCloudFinder was assembled from four freely accessible sources during April and May 2026, then standardised into a unified Parquet pipeline before filtering and labelling. The repository dataset is a labelled subset of that larger collection.
+
+| Source | How data was collected | Geographic coverage |
+| --- | --- | --- |
+| Danish Maritime Authority (DMA) | Daily `aisdk-YYYY-MM-DD.zip` archives were downloaded from the public DMA AIS portal and extracted from CSV files. | Danish waters and nearby surrounding seas. |
+| Fintraffic / Digitraffic | Live AIS messages were collected from the Fintraffic MQTT-over-WebSocket feed on `meri.digitraffic.fi`, subscribing to vessel location and metadata topics. | Eastern Baltic and Gulf of Finland coverage. |
+| AISStream.io | Live AIS messages were collected from the AISStream WebSocket API using a world bounding box subscription. | Worldwide community-operated coverage. |
+| AISHub | Polled snapshots were fetched from the AISHub `ws.php` endpoint, typically returned as zipped JSON (`compress=1`). | Worldwide community-operated coverage. |
+
+In the full study, these sources were chosen because they provided public or research-permitted access to largely unfiltered AIS messages at a scale suitable for coordinated spoofing analysis. Coverage was strongest across Northern Europe and major European coastal regions, with additional wider-area visibility from the two global community feeds.
+
+## Dataset Summary
+aiss
 | Field | Value |
 | --- | --- |
 | Format | Parquet |
