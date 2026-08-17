@@ -1,7 +1,5 @@
 # SpoofCloudFinder
 
-SpoofCloudFinder is a message-level AIS dataset for studying coordinated maritime GNSS spoofing. The repository contains one combined Parquet file covering April and May 2026 and a notebook for profiling the data.
-
 Live demo available here: [https://digitalfreelancing.co.uk](https://digitalfreelancing.co.uk) 
 
 ## Files
